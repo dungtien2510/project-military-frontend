@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-around;
+  color: #343a40;
+  background-color: #a5d8ff;
+  padding: 3rem;
+}
+.footerCol {
+  list-style-type: none;
+  width: 20%;
+}
+.introFooter {
+  width: 30%;
+}
+.footerCol li {
+  margin-bottom: 1rem;
+}
+.footerCol a {
+  color: #343a40;
+}
+.footerCol a:hover {
+  color: #1864ab;
+}

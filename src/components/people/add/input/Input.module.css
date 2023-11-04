@@ -1,0 +1,27 @@
+.input {
+  color: #343a40;
+  margin: 0 auto 1rem 0;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.form-input__input input,
+.form-input__input select {
+  border: none;
+  height: 2rem;
+  width: 100%;
+  border-radius: 5px;
+}
+.form-input__input input:forcus,
+.form-input__input select:forcus {
+  border: 1px solid #74c0fc;
+}
+
+.input-message__error {
+  color: #ff6b6b;
+  font-size: 14px;
+  font-weight: 600;
+}
+.inValid {
+  background-color: #ffe3e3;
+  border: 2px solid #ff8787;
+}

@@ -1,0 +1,50 @@
+.formConfi {
+  width: 60%;
+  background-color: #d0ebff;
+  padding: 1rem 3rem;
+  margin: auto;
+  margin-top: 7rem;
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.203);
+}
+.formConfi h2 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #adb5bd;
+  color: #495057;
+  font-weight: 600;
+}
+.formConfi input,
+.formConfi select {
+  border: none;
+  height: 2rem;
+  width: 100%;
+  border-radius: 5px;
+}
+.input {
+  color: #343a40;
+  margin: 0 auto 1rem 0;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.divBtn {
+  text-align: right;
+  margin-top: 1rem;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #2f9e44;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #2b8a3e7c;
+  margin: 10px;
+  text-align: right;
+}
+.btn:hover,
+.btn:active {
+  background-color: #2b8a3e;
+  box-shadow: none;
+}

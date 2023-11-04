@@ -1,0 +1,22 @@
+.button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #2f9e44;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #2b8a3e7c;
+  margin: 10px;
+}
+.button:hover,
+.button:active {
+  background-color: #2b8a3e;
+  box-shadow: none;
+}
+.button-reset {
+  background-color: #ff8787b2;
+}
+.button-reset:hover,
+.button-reset:active {
+  background-color: #ff6b6b;
+}

@@ -1,0 +1,39 @@
+.table {
+  width: 100%;
+  border: 1px solid #d0ebff;
+  margin: 5px 5px;
+}
+.table-item {
+  text-align: center;
+}
+.table-header {
+  background-color: #a5d8ff;
+}
+.table-item:hover {
+  background-color: #e7f5ff;
+}
+.table-item__btn button {
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 16x;
+  margin: auto 3px;
+}
+.table-item__btn .btn-edit {
+  background-color: #51cf66;
+}
+.table-item__btn .btn-edit:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: #40c057;
+}
+.table-item__btn .btn-delete {
+  background-color: #f03e3e;
+}
+.table-item__btn .btn-delete:hover {
+  background-color: #fa5252;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+

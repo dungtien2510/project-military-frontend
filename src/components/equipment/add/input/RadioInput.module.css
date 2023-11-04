@@ -1,0 +1,31 @@
+.input-radio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #343a40;
+  margin: 1.3rem 1rem 0.6rem 1rem;
+  height: 36px;
+  width: 100%;
+}
+.input-radio input {
+  width: 15px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+.input-radio div {
+  display: flex;
+  padding: 0 10px;
+}
+.input-message__error {
+  color: #ff6b6b;
+  font-size: 14px;
+  font-weight: 600;
+}
+.inValid {
+  background-color: #ffe3e3;
+  margin: 0;
+  margin-top: 1.3rem;
+
+  border-radius: 5px;
+}

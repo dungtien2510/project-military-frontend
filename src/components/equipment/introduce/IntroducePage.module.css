@@ -1,0 +1,9 @@
+.introContent {
+  position: relative;
+}
+
+.intro img {
+  width: 95vw;
+  height: 70vh;
+  object-fit: cover;
+}

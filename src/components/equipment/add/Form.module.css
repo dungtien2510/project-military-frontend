@@ -1,0 +1,26 @@
+.form {
+  width: 60%;
+  background-color: #d0ebff;
+  padding: 1rem 3rem;
+  margin-top: 1rem;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.203);
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #adb5bd;
+  color: #495057;
+  font-weight: 600;
+}
+.button {
+  text-align: right;
+}
