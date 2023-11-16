@@ -1,7 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import style from "./Navbar.module.css";
-
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/auth";
 function NavBar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const clickLogoutHandler = (e) => {
+    dispatch(authActions.setLogout());
+    navigate("/");
+  };
   return (
     <nav className={style.navbar}>
       <div className={style["navbar-type"]}>
@@ -40,17 +47,19 @@ function NavBar() {
           <span>Tìm kiếm</span>
         </NavLink>
 
-        {<NavLink
-          to="configuration"
-          className={({ isActive }) =>
-            isActive
-              ? style["navbar-item"] + " " + style.active
-              : style["navbar-item"]
-          }
-        >
-          <img src="./icon/manager.png" width="30px" color="white" />
-          <span>Cấu hình</span>
-        </NavLink>}
+        {
+          <NavLink
+            to="configuration"
+            className={({ isActive }) =>
+              isActive
+                ? style["navbar-item"] + " " + style.active
+                : style["navbar-item"]
+            }
+          >
+            <img src="./icon/manager.png" width="30px" color="white" />
+            <span>Cấu hình</span>
+          </NavLink>
+        }
 
         <NavLink
           to=""
@@ -64,6 +73,13 @@ function NavBar() {
           <img src="./icon/type.png" width="30px" color="white" />
           <span>Giới thiệu</span>
         </NavLink>
+        <button
+          className={style["navbar-item-button"]}
+          onClick={clickLogoutHandler}
+        >
+          <img src="./icon/logout.png" width="30px" color="white" />
+          {/* <span>Đăng xuất</span> */}
+        </button>
       </div>
     </nav>
   );

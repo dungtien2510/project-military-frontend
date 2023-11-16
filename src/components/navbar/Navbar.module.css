@@ -21,7 +21,7 @@
   color: #f8f9fa;
   justify-content: space-between;
   align-items: center;
-
+  text-decoration: none;
   font-weight: 500;
   align-items: center;
   font-size: 14px;
@@ -30,7 +30,17 @@
   background-color: #4dabf7;
   cursor: pointer;
 }
-
+.navbar-item-button {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid#74c0fc;
+  background-color: #74c0fc;
+  color: #f8f9fa;
+}
+.navbar-item-button:hover {
+  background-color: #4dabf7;
+  cursor: pointer;
+}
 .navbar-item span {
   text-align: center;
   color: #f8f9fa;
