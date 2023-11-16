@@ -15,6 +15,7 @@ import DetailPeople from "./pages/people/Detail";
 import ListPeople from "./pages/people/List";
 import ConfigurationPeople from "./pages/people/Configuration";
 import IntroducePeople from "./pages/people/Introduce";
+import AuthPage, { action as actionAuth } from "./pages/auth/Auth";
 // import LayoutEquip from "./pages/layout/Layout";
 // import LayoutWeapon from "./pages/layout/LayoutWeapon";
 // import SearchWeapon from "./pages/weapon/Search";
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     element: <RootPage />,
     children: [
       { path: "", element: <Home /> },
+      { path: "auth", element: <AuthPage />, action: actionAuth },
       {
         path: "people",
         element: <Layout />,

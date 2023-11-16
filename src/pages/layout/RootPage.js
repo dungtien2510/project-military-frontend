@@ -6,7 +6,6 @@ function RootPage() {
   return (
     <>
       <Header />
-
       <main className={style.background}>
         <Outlet />
       </main>

@@ -1,0 +1,19 @@
+.formLogin input,
+.formLogin p {
+  height: 60px;
+  width: 75%;
+  margin: 0 auto;
+}
+.formLogin {
+  text-align: center;
+}
+.form button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 0;
+  margin-top: 1rem;
+
+  font-size: 20px;
+  height: 60px;
+  width: 75%;
+}

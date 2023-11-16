@@ -1,6 +1,12 @@
 import { NavLink } from "react-router-dom";
 import style from "./Header.module.css";
+import { getToken } from "../../util/token";
+import { useState, useEffect, useMemo } from "react";
+import { useSelector } from "react-redux";
 function Header() {
+  // const token = getToken();
+  const { token } = useSelector((state) => state.auth);
+
   return (
     <div className={style["header"]}>
       <h2>
@@ -10,27 +16,41 @@ function Header() {
         </NavLink>
       </h2>
       <div className={style["header-item"]}>
-        <NavLink
-          to={"/people"}
-          className={({ isActive }) => (isActive ? style.active : undefined)}
-        >
-          <img src="./icon/group.png" width="40px" />
-          <span>Quân Nhân</span>
-        </NavLink>
-        <NavLink
-          to={"/equipment"}
-          className={({ isActive }) => (isActive ? style.active : undefined)}
-        >
-          <img src="./icon/bullets.png" width="40px" />
-          <span>Vũ khí, khí tài</span>
-        </NavLink>
-        {/* <NavLink
-          to={"/equipment"}
-          className={({ isActive }) => (isActive ? style.active : undefined)}
-        >
-          <img src="./icon/radio.png" width="40px" />
-          <span>Khí tài</span>
-        </NavLink> */}
+        {token && (
+          <>
+            <NavLink
+              to={"/people"}
+              className={({ isActive }) =>
+                isActive ? style.active : undefined
+              }
+            >
+              <img src="./icon/group.png" width="30px" />
+              <span>Quân Nhân</span>
+            </NavLink>
+            <NavLink
+              to={"/equipment"}
+              className={({ isActive }) =>
+                isActive ? style.active : undefined
+              }
+            >
+              <img src="./icon/bullets.png" width="30px" />
+              <span>Vũ khí, khí tài</span>
+            </NavLink>
+          </>
+        )}
+        {!token && (
+          <>
+            <NavLink
+              to={"/auth?mode=login"}
+              className={({ isActive }) =>
+                isActive ? style.active : undefined
+              }
+            >
+              <img src="./icon/login.png" width="30px" />
+              <span>Đăng nhập</span>
+            </NavLink>
+          </>
+        )}
       </div>
     </div>
   );

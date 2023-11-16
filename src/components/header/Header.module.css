@@ -2,9 +2,9 @@
   position: fixed;
   width: 100%;
   height: 8vh;
-  margin: 0 0 2px 0;
+
   top: 0;
-  padding: 10px 1.4rem;
+  padding: 10px 1rem;
   background-color: #339bf0;
   color: #e7f5ff;
   z-index: 2;
@@ -21,6 +21,7 @@
   align-items: center;
   gap: 10px;
   color: white;
+  text-decoration: none;
 }
 .header-item {
   display: flex;
@@ -29,17 +30,18 @@
   font-size: 18px;
   font-weight: 500;
   padding: 0 20px;
-  margin-right: 1rem;
 }
 .header-item a {
+  text-decoration: none;
   padding: 10px 15px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 5px;
-  width: 180px;
+  height: 100%;
+  gap: 1px;
+  width: 160px;
   color: white;
-  text-decoration: none;
+  font-size: 14px;
 }
 .header-item a:hover {
   background-color: #1971c2;
