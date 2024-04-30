@@ -2,6 +2,7 @@ import { Outlet, redirect, useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar/Navbar";
 import style from "./Layout.module.css";
 import { getToken } from "../../util/token";
+
 function Layout() {
   const token = getToken();
   const navigate = useNavigate();
