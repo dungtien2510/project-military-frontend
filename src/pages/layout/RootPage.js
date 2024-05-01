@@ -4,12 +4,16 @@ import LayoutVQ2 from "./layoutVQ2";
 import style from "./RootPage.module.css";
 function RootPage() {
   return (
-    <LayoutVQ2>
-      <Header />
-      <main className={style.background}>
-        <Outlet />
-      </main>
-    </LayoutVQ2>
+    // <LayoutVQ2>
+    <div>
+      <LayoutVQ2 />
+      <div id={style.layout}>
+        {/* <Header /> */}
+        <main className={style.background}>
+          <Outlet />
+        </main>
+      </div>
+    </div>
   );
 }
 export default RootPage;
