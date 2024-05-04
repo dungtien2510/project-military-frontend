@@ -1,0 +1,81 @@
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Button from "react-bootstrap/Button";
+import style from "./HeaderNew.module.css";
+function HeaderNew() {
+  const { token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const onSelectHandler = (a, b) => {
+    return navigate(a);
+  };
+  return (
+    <Nav
+      variant="tabs"
+      defaultActiveKey="/home"
+      className={`dark position-fixed text-white bg-body-tertiary ${style.header}`}
+      onSelect={onSelectHandler}
+    >
+      <Nav.Item className="px-3">
+        <Nav.Link eventKey="/overview">Tổng quan</Nav.Link>
+      </Nav.Item>
+      <Nav.Item className="px-3">
+        <NavDropdown title="Danh sách" id="nav-dropdown">
+          <NavDropdown.Item eventKey="/people/list">Quân nhân</NavDropdown.Item>
+          <NavDropdown.Item eventKey="" href="">
+            Người thân
+          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="2.3" href="">
+            Đơn vị
+          </NavDropdown.Item>
+
+          <NavDropdown.Item eventKey="2.4" href="">
+            Khen thưởng, kỷ luật
+          </NavDropdown.Item>
+        </NavDropdown>
+      </Nav.Item>
+      <Nav.Item className="px-3">
+        <NavDropdown title="Cấu hình" id="nav-dropdown">
+          <NavDropdown.Item eventKey="4.1" href="">
+            Đơn vị
+          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="4.2" href="">
+            Khen thưởng, kỷ luật
+          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="4.3" href="">
+            Something else here
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item eventKey="4.4" href="">
+            Separated link
+          </NavDropdown.Item>
+        </NavDropdown>
+      </Nav.Item>
+      <Nav.Item className="px-3">
+        <Nav.Link
+          eventKey="4.5"
+          className={({ isActive }) => (isActive ? "active" : undefined)}
+          href="/equipment"
+        >
+          Giới thiệu
+        </Nav.Link>
+      </Nav.Item>
+      {!token && (
+        <>
+          <NavLink to={"/auth?mode=login"} className="">
+            <img src="./icon/login.png" width="30px" />
+            <span>Đăng nhập</span>
+          </NavLink>
+        </>
+      )}
+      {token && (
+        <Button variant="outline-success" className="ml-auto p-2">
+          Đăng xuất
+        </Button>
+      )}
+    </Nav>
+  );
+}
+
+export default HeaderNew;

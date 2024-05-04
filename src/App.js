@@ -16,6 +16,7 @@ import ListPeople from "./pages/people/List";
 import ConfigurationPeople from "./pages/people/Configuration";
 import IntroducePeople from "./pages/people/Introduce";
 import AuthPage, { action as actionAuth } from "./pages/auth/Auth";
+
 // import LayoutEquip from "./pages/layout/Layout";
 // import LayoutWeapon from "./pages/layout/LayoutWeapon";
 // import SearchWeapon from "./pages/weapon/Search";
@@ -24,6 +25,10 @@ import AuthPage, { action as actionAuth } from "./pages/auth/Auth";
 // import ConfigurationWeapon from "./pages/weapon/Configuration";
 // import IntroduceWeapon from "./pages/weapon/Introduce";
 import Layout from "./pages/layout/Layout";
+
+import OverviewPage from "./pages/people/Overview";
+
+import OverviewDetailPage from "./pages/people/OverviewDetail";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +36,13 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <Home /> },
       { path: "auth", element: <AuthPage />, action: actionAuth },
+      {
+        path: "overview",
+        element: <OverviewPage />,
+
+        children: [{ path: ":id", element: <OverviewDetailPage /> }],
+      },
+
       {
         path: "people",
         element: <Layout />,
@@ -43,18 +55,18 @@ const router = createBrowserRouter([
           { path: "", element: <IntroducePeople /> },
         ],
       },
-      {
-        path: "equipment",
-        element: <Layout />,
-        children: [
-          { path: "search", element: <SearchEquip /> },
-          { path: "detail", element: <DetailEquip /> },
-          { path: "add", element: <AddEquip /> },
-          { path: "list", element: <ListEquip /> },
-          { path: "configuration", element: <ConfigurationEquip /> },
-          { path: "", element: <IntroduceEquip /> },
-        ],
-      },
+      // {
+      //   path: "equipment",
+      //   element: <Layout />,
+      //   children: [
+      //     { path: "search", element: <SearchEquip /> },
+      //     { path: "detail", element: <DetailEquip /> },
+      //     { path: "add", element: <AddEquip /> },
+      //     { path: "list", element: <ListEquip /> },
+      //     { path: "configuration", element: <ConfigurationEquip /> },
+      //     { path: "", element: <IntroduceEquip /> },
+      //   ],
+      // },
       // {
       //   path: "weapon",
       //   element: <Layout />,

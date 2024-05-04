@@ -58,7 +58,7 @@ function Login() {
     };
     const applyData = (data) => {
       dispatch(authActions.setLogin(data));
-      navigate("/people");
+      navigate("/overview");
     };
     userLogin(applyData, request);
     if (error) {

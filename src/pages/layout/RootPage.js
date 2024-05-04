@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import Header from "../../components/header/Header";
+import HeaderNew from "../../components/header/HeaderNew";
 import LayoutVQ2 from "./layoutVQ2";
 import style from "./RootPage.module.css";
 function RootPage() {
@@ -8,7 +9,7 @@ function RootPage() {
     <div>
       <LayoutVQ2 />
       <div id={style.layout}>
-        {/* <Header /> */}
+        <HeaderNew />
         <main className={style.background}>
           <Outlet />
         </main>

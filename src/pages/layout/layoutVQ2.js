@@ -54,6 +54,9 @@ function LayoutVQ2() {
             <NavLink>Quân báo</NavLink>
           </li>
           <li>
+            <NavLink>Quản lý quân nhân</NavLink>
+          </li>
+          <li>
             <NavLink>Trao đổi thông tin</NavLink>
           </li>
           <li>

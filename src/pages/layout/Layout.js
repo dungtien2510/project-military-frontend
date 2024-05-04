@@ -1,6 +1,6 @@
 import { Outlet, redirect, useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar/Navbar";
-import NavNew from "../../components/navbar/NavNew";
+import NavNew from "../../components/header/HeaderNew";
 import style from "./Layout.module.css";
 import { getToken } from "../../util/token";
 
@@ -14,9 +14,7 @@ function Layout() {
   }
   return (
     <>
-      {/* <NavBar /> */}
-      <NavNew />
-      <main className={style.background}>
+      <main id={style.background}>
         <Outlet />
       </main>
     </>
