@@ -22,7 +22,9 @@ function HeaderNew() {
       </Nav.Item>
       <Nav.Item className="px-3">
         <NavDropdown title="Danh sách" id="nav-dropdown">
-          <NavDropdown.Item eventKey="/people/list">Quân nhân</NavDropdown.Item>
+          <NavDropdown.Item eventKey="/military/list">
+            Quân nhân
+          </NavDropdown.Item>
           <NavDropdown.Item eventKey="" href="">
             Người thân
           </NavDropdown.Item>

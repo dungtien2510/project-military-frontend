@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "people",
+        path: "military",
         element: <Layout />,
         children: [
           { path: "search", element: <SearchPeople /> },

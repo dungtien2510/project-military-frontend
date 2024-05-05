@@ -5,9 +5,9 @@ import Filter from "../../components/people/list/Filter";
 const ListPeople = () => {
   return (
     <>
-      <div>
+      {/* <div>
         <Filter />
-      </div>
+      </div> */}
       <ListPage />
     </>
   );
