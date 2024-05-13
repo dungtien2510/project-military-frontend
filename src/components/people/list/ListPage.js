@@ -13,6 +13,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+
 function List() {
   const token = getToken();
   const { error, loading, requestAPI: getData } = useHttp();
@@ -45,7 +46,7 @@ function List() {
   const [valueLocation, setValueLocation] = useState("");
   const [valuePosition, setValuePosition] = useState("");
   const [valueAcademic, setValueAcademic] = useState("");
-  const [valueBrithday, setValueBrithday] = useState("");
+  const [valueBirthday, setValueBirthday] = useState("");
   const [valueJoinArmy, setValueJoinArmy] = useState("");
   const [valueMarital, setValueMarital] = useState("");
   const [valueReward, setValueReward] = useState("");
@@ -79,8 +80,8 @@ function List() {
   const changeAcademic = (e) => {
     setValueAcademic(e.target.value);
   };
-  const changeBrithday = (e) => {
-    setValueBrithday(e.target.value);
+  const changeBirthday = (e) => {
+    setValueBirthday(e.target.value);
   };
   const changeJoinArmy = (e) => {
     setValueJoinArmy(e.target.value);
@@ -123,11 +124,14 @@ function List() {
 
   useEffect(() => {
     getData(applyData, request);
+    console.log(data);
   }, []);
 
   const getfullDate = (date) => {
     const dateNew = new Date(date);
-    return `${dateNew.getDate()}/${dateNew.getMonth()}/${dateNew.getFullYear()}`;
+    return `${dateNew.getDate()}/${
+      dateNew.getMonth() + 1
+    }/${dateNew.getFullYear()}`;
   };
 
   ////
@@ -137,7 +141,7 @@ function List() {
     event.preventDefault();
 
     const requestSubmit = {
-      http: `http://localhost:5000/client/military/list?name=${valueName}&rank=${valueCB}&object=${valueObject}&status=${valueStatus}&gender=${valueGender}&phone=${valuePhone}&id_number=${valueId}&location=${valueLocation}&position=${valuePosition}&academic=${valueAcademic}&brithday=${valueBrithday}&join_army=${valueJoinArmy}&marital_status=${valueMarital}&reward=${valueReward}&discipline=${valueDiscipline}`,
+      http: `http://localhost:5000/client/military/list?name=${valueName}&rank=${valueCB}&object=${valueObject}&status=${valueStatus}&gender=${valueGender}&phone=${valuePhone}&id_number=${valueId}&location=${valueLocation}&position=${valuePosition}&academic=${valueAcademic}&birthday=${valueBirthday}&join_army=${valueJoinArmy}&marital_status=${valueMarital}&reward=${valueReward}&discipline=${valueDiscipline}`,
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -277,13 +281,9 @@ function List() {
           </Form.Group>
         </Row>
         {isFilter && loading && (
-          <tr>
-            <td>
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden text-center">Loading...</span>
-              </div>
-            </td>
-          </tr>
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden text-center">Loading...</span>
+          </div>
         )}
         {isFilter && !loading && (
           <>
@@ -322,9 +322,12 @@ function List() {
                   value={valuePosition}
                 >
                   <option value="">chức vụ</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  {dataListFilter &&
+                    dataListFilter.positions.map((v) => (
+                      <option value={v._id} key={v._id}>
+                        {v.name}
+                      </option>
+                    ))}
                 </Form.Select>
               </Form.Group>
 
@@ -336,28 +339,35 @@ function List() {
                   value={valueAcademic}
                 >
                   <option value="">Trình độ</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="engineer">Kỹ sư</option>
+                  <option value="university">Đại học</option>
+                  <option value="college">Cao đẳng</option>
+                  <option value="intermediate">Trung Cấp</option>
+                  <option value="elementary">Sơ cấp</option>
+                  <option value="diff">Khác</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group as={Col} md="2" controlId="validationCustom01">
                 <Form.Control
-                  type="text"
-                  placeholder="Ngày sinh"
-                  onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => (e.target.type = "text")}
+                  type="number"
+                  placeholder="Năm sinh"
+                  // onFocus={(e) => (e.target.type = "year")}
+                  // onBlur={(e) => (e.target.type = "text")}
+                  min="1950"
+                  max={new Date().getFullYear()}
                   size="sm"
-                  onChange={changeBrithday}
-                  value={valueBrithday}
+                  onChange={changeBirthday}
+                  value={valueBirthday}
                 />
               </Form.Group>
               <Form.Group as={Col} md="2" controlId="validationCustom01">
                 <Form.Control
-                  type="text"
-                  placeholder="Nhập ngũ"
-                  onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => (e.target.type = "text")}
+                  type="number"
+                  placeholder="Năm nhập ngũ"
+                  // onFocus={(e) => (e.target.type = "year")}
+                  // onBlur={(e) => (e.target.type = "text")}
+                  min="1950"
+                  max={new Date().getFullYear()}
                   size="sm"
                   onChange={changeJoinArmy}
                   value={valueJoinArmy}
@@ -373,9 +383,9 @@ function List() {
                   value={valueMarital}
                 >
                   <option value="">Tình trạng hôn nhân</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="single">Độc thân</option>
+                  <option value="married">Có gia đình</option>
+                  <option value="unmarried">Đơn thân</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationCustomUsername">
@@ -469,19 +479,17 @@ function List() {
           {!loading &&
             data.military &&
             data.military.map((v, i) => (
-              <>
-                <tr key={i} className="position-relative">
-                  <td>{i + 1}</td>
-                  <td>{v.name}</td>
-                  <td>{v.rank}</td>
-                  <td>{v.position}</td>
-                  <td>{v.location.name}</td>
-                  <td>{getfullDate(v.birthday)}</td>
-                  <td>{getfullDate(v.join_army)}</td>
-                  <td>{v.phone}</td>
-                  <td colSpan={2}>{v.address}</td>
-                </tr>
-              </>
+              <tr key={i} className="position-relative">
+                <td>{i + 1}</td>
+                <td>{v.name}</td>
+                <td>{v.rank}</td>
+                <td>{v.position.name}</td>
+                <td>{v.location.name}</td>
+                <td>{getfullDate(v.birthday)}</td>
+                <td>{getfullDate(v.join_army)}</td>
+                <td>{v.phone}</td>
+                <td colSpan={2}>{v.address}</td>
+              </tr>
             ))}
         </tbody>
       </Table>
