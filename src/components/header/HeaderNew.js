@@ -25,14 +25,12 @@ function HeaderNew() {
           <NavDropdown.Item eventKey="/military/list">
             Quân nhân
           </NavDropdown.Item>
-          <NavDropdown.Item eventKey="" href="">
+          <NavDropdown.Item eventKey="/relative/list">
             Người thân
           </NavDropdown.Item>
-          <NavDropdown.Item eventKey="2.3" href="">
-            Đơn vị
-          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="/location/list">Đơn vị</NavDropdown.Item>
 
-          <NavDropdown.Item eventKey="2.4" href="">
+          <NavDropdown.Item eventKey="/reward/list">
             Khen thưởng, kỷ luật
           </NavDropdown.Item>
         </NavDropdown>

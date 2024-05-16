@@ -29,6 +29,12 @@ import Layout from "./pages/layout/Layout";
 import OverviewPage from "./pages/people/Overview";
 
 import OverviewDetailPage from "./pages/people/OverviewDetail";
+
+import ListPage from "./pages/relative/ListPage";
+import DetailPage from "./pages/relative/DetailPage";
+
+//location
+import ListLocation from "./pages/location/ListPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,12 +54,25 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
           { path: "search", element: <SearchPeople /> },
-          { path: "detail", element: <DetailPeople /> },
+          { path: "detail/:id", element: <DetailPeople /> },
           { path: "add", element: <AddPeople /> },
           { path: "list", element: <ListPeople /> },
           { path: "configuration", element: <ConfigurationPeople /> },
           { path: "", element: <IntroducePeople /> },
         ],
+      },
+      {
+        path: "relative",
+        element: <Layout />,
+        children: [
+          { path: "list", element: <ListPage /> },
+          { path: "detail/:id", element: <DetailPage /> },
+        ],
+      },
+      {
+        path: "location",
+        element: <Layout />,
+        children: [{ path: "list", element: <ListLocation /> }],
       },
       // {
       //   path: "equipment",

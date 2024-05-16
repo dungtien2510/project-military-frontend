@@ -6,10 +6,8 @@ function LayoutVQ2() {
 
   return (
     <>
-      {" "}
       <div className={style["header"]}>
         <h2>
-          {" "}
           VQ2-M1
           {/* <NavLink className={style.home} to="/"> */}
           {/* <img src="./icon/management.png" width="40px" /> */}

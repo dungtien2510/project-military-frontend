@@ -481,7 +481,9 @@ function List() {
             data.military.map((v, i) => (
               <tr key={i} className="position-relative">
                 <td>{i + 1}</td>
-                <td>{v.name}</td>
+                <td>
+                  <NavLink to={`/military/detail/${v._id}`}>{v.name}</NavLink>
+                </td>
                 <td>{v.rank}</td>
                 <td>{v.position.name}</td>
                 <td>{v.location.name}</td>

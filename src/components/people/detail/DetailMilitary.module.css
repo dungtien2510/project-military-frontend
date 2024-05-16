@@ -1,0 +1,44 @@
+.header {
+  padding: 10px 20px 10px 30px;
+  background-color: #e7f5ff;
+  color: #212529;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header p {
+  margin: 0;
+  padding-left: 10px;
+  font-style: italic;
+}
+.header h2 {
+  margin: 0;
+  color: #1864ab;
+}
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  color: #343a40;
+}
+.content div {
+  border-top: solid 2px #3bc9db;
+  padding: 0px 0px 40px 0px;
+  margin: 0 10px;
+}
+.content h5 {
+  color: #1971c2;
+  background-color: #e7f5ff79;
+  padding: 10px 40px 10px 30px;
+}
+.content li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+.content ul {
+  padding-left: 50px;
+  padding-right: 40px;
+}
+.button {
+}

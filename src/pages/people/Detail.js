@@ -1,9 +1,7 @@
+import DetailMilitary from "../../components/people/detail/DetailMilitary";
+
 const DetailPeople = () => {
-  return (
-    <div>
-      <h1>Detail Page</h1>
-    </div>
-  );
+  return <DetailMilitary />;
 };
 
 export default DetailPeople;
