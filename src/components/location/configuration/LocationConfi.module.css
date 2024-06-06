@@ -1,0 +1,27 @@
+.header {
+  padding: 10px 20px 10px 30px;
+  background-color: #e7f5ff;
+  color: #212529;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h2 {
+  margin: 0;
+  color: #1864ab;
+}
+.form_content {
+  margin: auto;
+  width: 80%;
+  background-color: #e7f5ff;
+}
+.content {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+.content label {
+  display: block;
+  margin-bottom: 5px;
+}

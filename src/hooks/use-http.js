@@ -37,6 +37,7 @@ const useHttp = () => {
     }
     setLoading(false);
   }, []);
+
   return { error, loading, requestAPI };
 };
 export default useHttp;

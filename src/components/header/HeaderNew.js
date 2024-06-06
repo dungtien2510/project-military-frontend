@@ -37,18 +37,14 @@ function HeaderNew() {
       </Nav.Item>
       <Nav.Item className="px-3">
         <NavDropdown title="Cấu hình" id="nav-dropdown">
-          <NavDropdown.Item eventKey="4.1" href="">
+          <NavDropdown.Item eventKey="/location/configuration">
             Đơn vị
           </NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.2" href="">
+          <NavDropdown.Item eventKey="/position/configuration">
+            Chức vụ
+          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="/reward/configuration">
             Khen thưởng, kỷ luật
-          </NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.3" href="">
-            Something else here
-          </NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item eventKey="4.4" href="">
-            Separated link
           </NavDropdown.Item>
         </NavDropdown>
       </Nav.Item>

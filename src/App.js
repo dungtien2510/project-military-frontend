@@ -36,6 +36,7 @@ import DetailPage from "./pages/relative/DetailPage";
 //location
 import ListLocation from "./pages/location/ListPage";
 import ListRewadPage from "./pages/reward/ListRewardPage";
+import LocationConfi from "./components/location/configuration/LocationConfi";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,7 +74,10 @@ const router = createBrowserRouter([
       {
         path: "location",
         element: <Layout />,
-        children: [{ path: "list", element: <ListLocation /> }],
+        children: [
+          { path: "list", element: <ListLocation /> },
+          { path: "configuration", element: <LocationConfi /> },
+        ],
       },
       {
         path: "reward",
