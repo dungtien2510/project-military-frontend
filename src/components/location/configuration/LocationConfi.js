@@ -6,11 +6,16 @@ import { getToken } from "../../../util/token";
 import lodash from "lodash";
 function LocationConfi() {
   const token = getToken();
-  const { loading, error, requestAPI: requestMilitary } = useHttp();
-  const [dataMilitary, setDataMilitary] = useState("");
+  const { loading, error, requestAPI: requestSuggestions } = useHttp();
+  const [dataMilitary, setDataMilitary] = useState([]);
   const [valueName, setValueName] = useState("");
-  const [valueInputMili, setValueInputMili] = useState("");
-  const fetchSuggestions = useCallback(
+  const [valueLocation, setValueLocation] = useState("");
+  const [selectedId, setSelectedId] = useState("");
+  const [dataLocation, setDataLocation] = useState([]);
+  const [selectedIdLocation, setSelectedIdLocation] = useState("");
+  ////////////////////////////////////
+  // search suggestions Military
+  const fetchNameSuggestions = useCallback(
     lodash.debounce((name) => {
       const request = {
         http: `http://localhost:5000/client/military/listName?name=${name}`,
@@ -21,24 +26,72 @@ function LocationConfi() {
       const applyData = (data) => {
         setDataMilitary(data);
       };
-      requestMilitary(applyData, request);
+      requestSuggestions(applyData, request);
     }, 300),
-    [requestMilitary, token]
+    [requestSuggestions, token]
   );
 
+  //
   const changeNameHandler = (e) => {
     const name = e.target.value;
     setValueName(name);
     if (name.trim() !== "") {
-      fetchSuggestions(name);
+      fetchNameSuggestions(name);
     } else {
       setDataMilitary([]); // Clear suggestions when input is empty
     }
   };
+
+  const selectNameHandler = (e) => {
+    const value = e.target.value;
+
+    const selected = dataMilitary.find((v) => value.includes(v.id_number));
+    console.log(selected);
+    if (selected) {
+      setSelectedId(selected._id);
+    }
+  };
+  /////////////////////////////////////////
+  // search location
+
+  const fetchLocationSuggestions = useCallback(
+    lodash.debounce((location) => {
+      const request = {
+        http: `http://localhost:5000/client/location/listName?name=${location}`,
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      };
+      const applyData = (data) => {
+        setDataLocation(data);
+      };
+      requestSuggestions(applyData, request);
+    }, 300),
+    [requestSuggestions, token]
+  );
+  //
+  const changeLocationHandler = (e) => {
+    const name = e.target.value;
+    setValueLocation(name);
+    if (name.trim() !== "") {
+      fetchLocationSuggestions(name);
+    } else {
+      setDataLocation([]);
+    }
+  };
+  //
+  const selectedLocationHandler = (e) => {
+    const value = e.target.value;
+    const selected = dataLocation.find((v) => v.name === value);
+    console.log(selected, "location selected");
+    if (selected) {
+      setSelectedIdLocation(selected._id);
+    }
+  };
   console.log(dataMilitary);
-  const submitHandler = (e) => {};
+  console.log(dataLocation, "location");
   return (
-    <Form className={style.formConfi} onSubmit={submitHandler}>
+    <Form className={style.formConfi}>
       <div className={style.header}>
         <h2>Cấu hình đơn vị</h2>
       </div>
@@ -69,7 +122,22 @@ function LocationConfi() {
         <div className={style.content}>
           <div>
             <label>Đơn vị cấp trên</label>
-            <input type="text" className="form-control" placeholder="Tên" />
+            <input
+              list="location"
+              onChange={changeLocationHandler}
+              onSelect={selectedLocationHandler}
+              value={valueLocation}
+              type="text"
+              className="form-control"
+              placeholder="Tên"
+              maxlength="50"
+            />
+            <input type="hidden" value={selectedIdLocation} name="selectedId" />
+
+            <datalist id="location">
+              {dataLocation.length !== 0 &&
+                dataLocation.map((v) => <option key={v._id}>{v.name}</option>)}
+            </datalist>
           </div>
           <div>
             <label>Người chỉ huy</label>
@@ -80,9 +148,12 @@ function LocationConfi() {
               type="text"
               className="form-control"
               placeholder="Tên"
+              onSelect={selectNameHandler}
+              maxlength="100"
             />
+            <input type="hidden" value={selectedId} name="selectedId" />
             <datalist id="military">
-              {dataMilitary &&
+              {dataMilitary.length !== 0 &&
                 dataMilitary.map((v) => (
                   <option
                     key={v._id}
