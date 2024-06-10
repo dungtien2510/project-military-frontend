@@ -37,6 +37,7 @@ import DetailPage from "./pages/relative/DetailPage";
 import ListLocation from "./pages/location/ListPage";
 import ListRewadPage from "./pages/reward/ListRewardPage";
 import LocationConfi from "./components/location/configuration/LocationConfi";
+import RewardConfi from "./components/reward/configuration/RewardConfi";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -82,7 +83,10 @@ const router = createBrowserRouter([
       {
         path: "reward",
         element: <Layout />,
-        children: [{ path: "list", element: <ListRewadPage /> }],
+        children: [
+          { path: "list", element: <ListRewadPage /> },
+          { path: "configuration", element: <RewardConfi /> },
+        ],
       },
       // {
       //   path: "equipment",
