@@ -88,6 +88,7 @@ function LocationConfi() {
               name="name"
               value={valueName}
               onChange={changeNameHandler}
+              autoComplete="off"
             />
           </div>
           <div>

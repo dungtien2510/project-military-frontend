@@ -5,14 +5,14 @@ import { getToken } from "../../util/token";
 function InputSuggestion({ id, label, http, setId, setOption }) {
   const [data, setData] = useState([]);
   const [valueName, setValueName] = useState("");
-  const [selectedId, setSelectedId] = useState("");
+
   const { loading, error, requestAPI: requestSuggestions } = useHttp();
   const token = getToken();
 
   const fetchSuggestions = useCallback(
-    lodash.debounce((location) => {
+    lodash.debounce((name) => {
       const request = {
-        http: `${http}${location}`,
+        http: `${http}${name}`,
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -58,8 +58,8 @@ function InputSuggestion({ id, label, http, setId, setOption }) {
         className="form-control"
         placeholder="Tên"
         maxLength="50"
+        autoComplete="off"
       />
-      <input type="hidden" value={selectedId} name="selectedId" />
 
       <datalist id={id}>
         {data.length !== 0 &&
