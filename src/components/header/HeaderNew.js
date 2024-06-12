@@ -46,6 +46,12 @@ function HeaderNew() {
           <NavDropdown.Item eventKey="/reward/configuration">
             Khen thưởng, kỷ luật
           </NavDropdown.Item>
+          <NavDropdown.Item eventKey="/relative/configuration">
+            Người thân
+          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="/military/configuration">
+            Quân nhân
+          </NavDropdown.Item>
         </NavDropdown>
       </Nav.Item>
       <Nav.Item className="px-3">

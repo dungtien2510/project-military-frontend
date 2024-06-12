@@ -38,6 +38,7 @@ import ListLocation from "./pages/location/ListPage";
 import ListRewadPage from "./pages/reward/ListRewardPage";
 import LocationConfi from "./components/location/configuration/LocationConfi";
 import RewardConfi from "./components/reward/configuration/RewardConfi";
+import RelativeConfig from "./components/relative/configuration/RelativeConfig";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -70,6 +71,7 @@ const router = createBrowserRouter([
         children: [
           { path: "list", element: <ListPage /> },
           { path: "detail/:id", element: <DetailPage /> },
+          { path: "configuration", element: <RelativeConfig /> },
         ],
       },
       {

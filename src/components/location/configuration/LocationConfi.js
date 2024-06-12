@@ -32,7 +32,7 @@ function LocationConfi() {
     return value.name;
   };
 
-  ///search suggestions
+  ///search suggestions military
   const setOptionMilitary = (value) => {
     return `${value.rank} ${value.name} ${value.id_number}`;
   };
