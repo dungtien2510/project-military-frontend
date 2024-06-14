@@ -13,7 +13,6 @@ import RootPage from "./pages/layout/RootPage";
 import SearchPeople from "./pages/people/Search";
 import DetailPeople from "./pages/people/Detail";
 import ListPeople from "./pages/people/List";
-import ConfigurationPeople from "./pages/people/Configuration";
 import IntroducePeople from "./pages/people/Introduce";
 import AuthPage, { action as actionAuth } from "./pages/auth/Auth";
 
@@ -39,6 +38,7 @@ import ListRewadPage from "./pages/reward/ListRewardPage";
 import LocationConfi from "./components/location/configuration/LocationConfi";
 import RewardConfi from "./components/reward/configuration/RewardConfi";
 import RelativeConfig from "./components/relative/configuration/RelativeConfig";
+import MilitaryConfig from "./components/people/configuration/MilitaryConfig";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
           { path: "detail/:id", element: <DetailPeople /> },
           { path: "add", element: <AddPeople /> },
           { path: "list", element: <ListPeople /> },
-          { path: "configuration", element: <ConfigurationPeople /> },
+          { path: "configuration", element: <MilitaryConfig /> },
           { path: "", element: <IntroducePeople /> },
         ],
       },
