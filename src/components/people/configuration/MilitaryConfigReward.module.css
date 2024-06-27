@@ -1,0 +1,30 @@
+.reward ul {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.btn_reward {
+  display: inline-block;
+  grid-column: 1/5;
+}
+.choose_reward {
+  grid-column: 1/5;
+}
+.table {
+  font-size: 14px;
+}
+.btn_delete {
+  color: #e7f5ff;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #fa5252;
+  border: none;
+  padding: 2px 20px;
+  display: inline-block;
+  margin: auto;
+}
+.table td {
+  text-align: center;
+}
+.btn_delete:hover {
+  background-color: #f03e3e;
+  color: #eef6fc;
+}

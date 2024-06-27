@@ -19,6 +19,7 @@ function InputSuggestion({ id, label, http, setId, setOption }) {
       };
       const applyData = (data) => {
         setData(data);
+        console.log(data);
       };
       requestSuggestions(applyData, request);
     }, 300),

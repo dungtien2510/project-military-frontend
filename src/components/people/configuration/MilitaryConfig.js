@@ -1,9 +1,12 @@
-import { Form } from "react-router-dom";
+import { Form, redirect, useNavigate } from "react-router-dom";
 import style from "./MilitaryConfig.module.css";
 import InputSuggestion from "../../inputSugges/InputSuggestion";
 import { useState } from "react";
 import { getToken } from "../../../util/token";
-
+import Table from "react-bootstrap/Table";
+import { get } from "lodash";
+import MilitaryConfigReward from "./MilitaryConfigReward";
+import MilitaryConfigRelative from "./MilitaryConfigRelative";
 function MilitaryConfig() {
   const token = getToken();
   const [valueName, setValueName] = useState("");
@@ -29,6 +32,14 @@ function MilitaryConfig() {
   const [valueUnion, setValueUnion] = useState("");
   const [valueNote, setValueNote] = useState("");
   const [loadingSubmit, setLoadingSubmit] = useState("");
+
+  //
+  const [dataReward, setDataReward] = useState([]);
+  //
+
+  const [dataRelative, setDataRelative] = useState([]);
+  //
+  const navigate = useNavigate();
   const changeNameHandler = (e) => {
     setValueName(e.target.value);
   };
@@ -125,6 +136,15 @@ function MilitaryConfig() {
     setValueNote(e.target.value);
   };
 
+  //input suggestions reward
+  const setReward = (data) => {
+    const dataReward = data.map((v) => {
+      return { id: v._id, date: v.year, note: v.note, type: v.type };
+    });
+    setDataReward(dataReward);
+  };
+  //input value family
+
   //input suggestion location
   const setOption = (value) => {
     return value.name;
@@ -144,6 +164,12 @@ function MilitaryConfig() {
     if (selectedIdPosition) {
       setSelectedIdPosition(selectedIdPosition._id);
     }
+  };
+  //get year
+  const getYear = (date) => {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    return year;
   };
 
   //
@@ -169,6 +195,9 @@ function MilitaryConfig() {
       party: valueParty,
       union_member: valueUnion,
     };
+    console.log(dataReward, dataRelative);
+    if (dataReward.length > 0) dataSubmit.reward = dataReward;
+    if (dataRelative.length > 0) dataSubmit.family = dataRelative;
     console.log(dataSubmit);
     setLoadingSubmit(true);
     fetch("http://localhost:5000/admin/military/add", {
@@ -186,6 +215,7 @@ function MilitaryConfig() {
       })
       .then((results) => {
         console.log(results);
+        return navigate("/military/detail/" + results.id_military);
       });
   };
   return (
@@ -421,7 +451,7 @@ function MilitaryConfig() {
             </li>
           </ul>
         </div>
-        <div className={style.info_family}>
+        <div className={style.info}>
           <h5>Thông tin liên hệ</h5>
           <ul>
             <li>
@@ -475,7 +505,7 @@ function MilitaryConfig() {
             </li>
           </ul>
         </div>
-        <div className={style.status}>
+        <div className={style.dang}>
           <h5>Đảng, đoàn</h5>
           <ul>
             <li>
@@ -505,31 +535,19 @@ function MilitaryConfig() {
           </ul>
         </div>
 
-        <div className={style.reward}>
-          <h5>Khen thưởng, kỹ luật</h5>
-          <ul>
-            <p>Khen thưởng</p>
-            <li>Chiến sĩ thi đua (2024)</li>
-          </ul>
-          <ul>
-            <p>Kỹ Luật</p>
-            <li></li>
-          </ul>
-        </div>
+        <MilitaryConfigReward setReward={setReward} />
 
-        <div className={style.info_family}>
-          <h5>Thông tin gia đình</h5>
-        </div>
-        <div className="text-end">
-          <button className="btn btn-primary" type="submit">
-            {loadingSubmit && (
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden text-center">Loading...</span>
-              </div>
-            )}
-            {!loadingSubmit && "Lưu"}
-          </button>
-        </div>
+        <MilitaryConfigRelative setRelative={setDataRelative} />
+      </div>
+      <div className={style.btn_submit}>
+        <button className="btn btn-success px-4 fs-5" type="submit">
+          {loadingSubmit && (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden text-center">Loading...</span>
+            </div>
+          )}
+          {!loadingSubmit && "Lưu"}
+        </button>
       </div>
     </Form>
   );
