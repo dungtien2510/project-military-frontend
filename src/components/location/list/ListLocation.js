@@ -185,9 +185,11 @@ function ListLocation() {
                   <NavLink to={`/overview/${v._id}`}>{v.name}</NavLink>
                 </td>
                 <td>
-                  <NavLink to={`/military/detail/${v.master.id}`}>
-                    {v.master.fullName}
-                  </NavLink>
+                  {v.master && (
+                    <NavLink to={`/military/detail/${v.master.id}`}>
+                      {v.master.fullName}
+                    </NavLink>
+                  )}
                 </td>
                 <td>
                   {v.superior && (

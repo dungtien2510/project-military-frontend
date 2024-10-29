@@ -39,6 +39,7 @@ import LocationConfi from "./components/location/configuration/LocationConfi";
 import RewardConfi from "./components/reward/configuration/RewardConfi";
 import RelativeConfig from "./components/relative/configuration/RelativeConfig";
 import MilitaryConfig from "./components/people/configuration/MilitaryConfig";
+import PositionConfi from "./components/position/configuration/PositionConfi";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
           { path: "add", element: <AddPeople /> },
           { path: "list", element: <ListPeople /> },
           { path: "configuration", element: <MilitaryConfig /> },
+
           { path: "", element: <IntroducePeople /> },
         ],
       },
@@ -88,6 +90,14 @@ const router = createBrowserRouter([
         children: [
           { path: "list", element: <ListRewadPage /> },
           { path: "configuration", element: <RewardConfi /> },
+        ],
+      },
+      {
+        path: "position",
+        element: <Layout />,
+        children: [
+          { path: "list" },
+          { path: "configuration", element: <PositionConfi /> },
         ],
       },
       // {

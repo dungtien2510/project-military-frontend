@@ -63,10 +63,14 @@ function LocationConfi() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataSubmit),
-    }).then((results) => {
-      console.log(results);
-      return setLoadingSubmit(false);
-    });
+    })
+      .then((results) => {
+        setLoadingSubmit(false);
+        return results.json();
+      })
+      .then((results) => {
+        console.log(results);
+      });
   };
 
   const changeLevel = (e) => {

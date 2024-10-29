@@ -85,7 +85,7 @@ function RewardConfi() {
               type="number"
               className="form-control"
               placeholder="Cấp độ"
-              max="8"
+              max="12"
               value={valueLevel}
               onChange={changeLevelHandler}
             />
